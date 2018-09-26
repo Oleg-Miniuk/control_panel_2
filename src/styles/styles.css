@@ -1,0 +1,56 @@
+div {
+  box-sizing: border-box;
+}
+
+h4 {
+  font-family: "Electrolize", "sans-serif";
+  margin: 0px !important;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btns-panel {
+  width: 500px;
+  margin: 78px auto 0;
+  position: relative;
+}
+
+.action-btns {
+  width: 100%;;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: -66px;
+}
+
+.btns-checker {
+  width: 500px;
+  margin: 20px auto 0;
+}
+
+.btns-checker__header {
+  margin: 0px 30px 0 0;
+}
+
+.btns-mode-title {
+  width: 500px;
+  margin: 20px auto 0;
+}
+
+.button {
+  margin: 30px;
+}
+
+.automatic-ui-wrapper {
+  height: 80%;
+}
