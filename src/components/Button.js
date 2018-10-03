@@ -27,6 +27,9 @@ const getActiveBackground = (type) => {
 };
 
 const Button = styled.button`
+  justify-content: center;
+  align-items: center;
+  display: flex;
   align-items: flex-start;
   background-attachment: scroll;
   background-clip: border-box;
@@ -56,7 +59,6 @@ const Button = styled.button`
   box-sizing: border-box;
   color: ${props => getColor(props.type)};
   cursor: pointer;
-  display: inline-block;
   font-family: Arial;
   font-size: 15.75px;
   font-stretch: 100%;

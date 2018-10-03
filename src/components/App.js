@@ -14,8 +14,8 @@ const Background = styled(Box)`
 
 const BackgroundImage = styled.img`
   position: absolute;
-  max-width: 100vw;
-  height: 100vh;
+  width: 100vw;
+  max-height: 100vh;
   object-fit: cover;
   z-index: -1;
 `;
@@ -28,21 +28,13 @@ const ModeTitle = styled.h4`
   font-weight: 700;
   height: 27px;
   line-height: 27px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
   text-shadow: rgba(161, 236, 251, 0.65) 0px 0px 4px;
   text-transform: uppercase;
   transition-delay: 0s;
   transition-duration: 0.25s;
   transition-property: color;
   transition-timing-function: ease-out;
-  width: 160.312px;
-  -webkit-margin-after: 0px;
-  -webkit-margin-before: 0px;
-  -webkit-margin-end: 0px;
-  -webkit-margin-start: 0px;
+  margin-right: 40px;
 `;
 class App extends Component {
   state = {
@@ -76,7 +68,7 @@ class App extends Component {
     return (
       <Background>
         <BackgroundImage src={backgroundHud} />
-        <Flex justify="center" align="center" className="btns-checker">
+        <Flex pt="20px" justify="center" align="center" className="btns-checker">
           <Box className="btns-checker__header">
             <ModeTitle>
 mode:

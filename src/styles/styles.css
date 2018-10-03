@@ -8,7 +8,7 @@ div {
 
 h4 {
   font-family: "Electrolize", "sans-serif";
-  margin: 0px !important;
+  margin: 0px;
 }
 
 .center {
@@ -27,12 +27,6 @@ h4 {
   width: 500px;
   margin: 78px auto 0;
   position: relative;
-}
-
-.action-btns {
-  width: 100%;;
-  position: absolute;
-  top: -66px;
 }
 
 .btns-checker {

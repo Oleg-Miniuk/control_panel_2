@@ -5,7 +5,7 @@ import Button from './Button';
 
 const ManualUI = () => (
   <Box className="btns-panel">
-    <Flex justify="space-around" className="action-btns">
+    <Flex m="30px auto 0" w="80%" justify="space-around">
       <Button animate type="secondary" className="button">
         Patrol
       </Button>
@@ -13,11 +13,15 @@ const ManualUI = () => (
         Fire
       </Button>
     </Flex>
-    <Flex justify="center" align="center" column className="movement-btns">
+    <Flex mt="20px" justify="center" align="center" column className="movement-btns">
       <Button animate className="button movement-button">
         &#8593;
       </Button>
-      <Flex justify="center" className="vertical">
+      <Flex
+        w="210px"
+        justify="space-between"
+        className="vertical"
+      >
         <Button animate className="button movement-button">
           &#8592;
         </Button>
