@@ -4,8 +4,8 @@ import Flex from '@core/units/Flex/Flex';
 import Button from './Button';
 
 const ManualUI = () => (
-  <Box className="btns-panel">
-    <Flex m="30px auto 0" w="80%" justify="space-around">
+  <Box m="60px auto" className="btns-panel">
+    <Flex m="0 auto" w="80%" justify="space-around">
       <Button animate type="secondary" className="button">
         Patrol
       </Button>

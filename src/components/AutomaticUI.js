@@ -1,12 +1,11 @@
 import React from 'react';
 import Flex from '@core/units/Flex/Flex';
 import styled from 'styled-components';
-// import microphone from '../../public_common/microphone2.png';
 import Microphone from './Microphone';
 
 const Wrapper = styled(Flex).attrs({
   justify: 'center',
-  mt: '119px',
+  m: '130px 57px 0 0',
   height: '80%'
 })``;
 
