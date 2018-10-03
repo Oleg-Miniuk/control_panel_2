@@ -1,33 +1,35 @@
 import React from 'react';
-import { Button } from 'arwes';
+import Box from '@core/units/Box/Box';
+import Flex from '@core/units/Flex/Flex';
+import Button from './Button';
 
 const ManualUI = () => (
-  <div className="btns-panel">
-    <div className="action-btns">
-      <Button animate layer="secondary" className="button">
+  <Box className="btns-panel">
+    <Flex justify="space-around" className="action-btns">
+      <Button animate type="secondary" className="button">
         Patrol
       </Button>
-      <Button animate layer="alert" className="button">
+      <Button animate type="alert" className="button">
         Fire
       </Button>
-    </div>
-    <div className="movement-btns center">
-      <Button animate className="button">
-        &#8592;
+    </Flex>
+    <Flex justify="center" align="center" column className="movement-btns">
+      <Button animate className="button movement-button">
+        &#8593;
       </Button>
-      <div className="center vertical">
-        <Button animate className="button center">
-          &#8593;
+      <Flex justify="center" className="vertical">
+        <Button animate className="button movement-button">
+          &#8592;
         </Button>
-        <Button animate className="button">
-          &#8595;
+        <Button animate className="button movement-button">
+          &#8594;
         </Button>
-      </div>
-      <Button animate className="button">
-        &#8594;
+      </Flex>
+      <Button animate className="button movement-button">
+        &#8595;
       </Button>
-    </div>
-  </div>
+    </Flex>
+  </Box>
 );
 
 export default ManualUI;

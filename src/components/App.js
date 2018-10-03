@@ -1,46 +1,63 @@
 import React, { Component } from 'react';
-import { Arwes, Button, Heading } from 'arwes';
+import styled from 'styled-components';
+import Box from '@core/units/Box/Box';
+import Flex from '@core/units/Flex/Flex';
 import ManualUI from './ManualUI';
 import AutomaticUI from './AutomaticUI';
-import commandsActions from '../logic/commandsActions';
+// import commandsActions from '../logic/commandsActions';
+import backgroundHud from '../../public_common/hud_back.jpg';
+import Button from './Button';
 
-const background = 'https://i.pinimg.com/originals/d7/8d/40/d78d4069da54ade6085b7d540cfde597.jpg';
+const Background = styled(Box)`
+  position: relative;
+`;
+
+const BackgroundImage = styled.img`
+  position: absolute;
+  max-width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+`;
+
+const ModeTitle = styled.h4`
+  color: rgb(161, 236, 251);
+  display: block;
+  font-family: Electrolize, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  height: 27px;
+  line-height: 27px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  text-shadow: rgba(161, 236, 251, 0.65) 0px 0px 4px;
+  text-transform: uppercase;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: color;
+  transition-timing-function: ease-out;
+  width: 160.312px;
+  -webkit-margin-after: 0px;
+  -webkit-margin-before: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-margin-start: 0px;
+`;
 class App extends Component {
   state = {
     mode: 'manual'
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.mode !== 'automatic' && this.state.mode === 'automatic') {
-      this.listenToSpeech();
+    const { mode } = this.state;
+    if (prevState.mode !== 'automatic' && mode === 'automatic') {
+      // this.listenToSpeech();
     }
   }
 
   listenToSpeech = () => {
-    const SpeechRecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognitionConstructor();
-    recognition.lang = 'ru-RU';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-    recognition.onresult = (e) => {
-      console.log(e.results);
-      const command = e.results[e.results.length - 1][0].transcript;
-      console.log(command);
-      commandsActions.checkCommand(command);
-      setTimeout(this.listenToSpeech, 0);
-    };
-    recognition.onspeechend = () => {
-      console.log('end recognition');
-      recognition.stop();
-    };
-    recognition.onerror = (event) => {
-      console.log(
-        event.error
-      );
-      setTimeout(this.listenToSpeech, 0);
-    };
-    console.log('start recognition');
-    recognition.start();
+    console.log('listen');
   };
 
   setMode = mode => this.setState({ mode });
@@ -49,37 +66,33 @@ class App extends Component {
 
   setManual = () => this.setMode('manual');
 
-  getBtnsProps = type => this.state.mode === type ? { layer: 'success' } : { disabled: false };
-
+  getBtnsProps = (type) => {
+    const { mode } = this.state;
+    return mode === type ? { layer: 'success' } : { disabled: false };
+  };
 
   render() {
     const { mode } = this.state;
     return (
-      <Arwes background={background}>
-        <div className="center btns-checker">
-          <div className="btns-checker__header">
-            <Heading node="h4">
+      <Background>
+        <BackgroundImage src={backgroundHud} />
+        <Flex justify="center" align="center" className="btns-checker">
+          <Box className="btns-checker__header">
+            <ModeTitle>
 mode:
               {' '}
               {mode}
-            </Heading>
-          </div>
-          <Button
-            {...this.getBtnsProps('automatic')}
-            onClick={this.setAutomatic}
-          >
+            </ModeTitle>
+          </Box>
+          <Button {...this.getBtnsProps('automatic')} onClick={this.setAutomatic}>
             Automatic
           </Button>
-          <Button
-            {...this.getBtnsProps('manual')}
-            style={{ width: '110px' }}
-            onClick={this.setManual}
-          >
+          <Button {...this.getBtnsProps('manual')} style={{ width: '110px' }} onClick={this.setManual}>
             Manual
           </Button>
-        </div>
+        </Flex>
         {mode === 'automatic' ? <AutomaticUI /> : <ManualUI />}
-      </Arwes>
+      </Background>
     );
   }
 }
