@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --config config/webpack.config.js",
     "prod": "webpack --mode production --config config/webpack.production.config.js",
-    "cordova": "webpack --mode production --config config/webpack.production.config.js --env.cordova && node ./scripts/cordova.js"
+    "cordova": "webpack --mode production --config config/webpack.production.config.js --env.cordova && node ./scripts/cordova.js && cd ./cordova && cordova run android"
   },
   "husky": {
     "hooks": {
