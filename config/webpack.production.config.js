@@ -1,30 +1,24 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const commonWebpackModules = require('./commonWebpackModules');
+const getCommonWebpackModules = require('./commonWebpackModules');
 
-const {
-  module: { rules: commonRules },
-  resolve: {
-    alias: commonAlias
-  }
-} = commonWebpackModules;
 
 module.exports = (env) => {
+  const {
+    module: { rules: commonRules },
+    resolve: { alias: commonAliases },
+    plugins: commonPlugins
+  } = getCommonWebpackModules(env);
+
   console.log(env);
+
   const config = { mode: 'production',
     context: path.join(__dirname, '../src'),
     entry: { bundle: './index.js' },
-    output: { filename: '[name].js', path: path.join(__dirname, '../build_prod') },
-    resolve: { alias: { ...commonAlias } },
+    output: { filename: '[name].js',
+      path: path.join(__dirname, '../build_prod') },
+    resolve: { alias: { ...commonAliases } },
     module: { rules: [...commonRules] },
-    plugins: [new HtmlWebpackPlugin({
-      template:
-          env && env.cordova
-            ? path.join(__dirname, '../public_cordova/index.html')
-            : path.join(__dirname, '../public_web/index.html'),
-      filename: 'index.html',
-      inject: 'body'
-    })] };
+    plugins: [...commonPlugins] };
 
   return config;
 };

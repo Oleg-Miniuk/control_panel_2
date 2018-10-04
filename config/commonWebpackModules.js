@@ -1,6 +1,7 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const commonWebpackModules = {
+const commonWebpackModules = env => ({
   module: {
     rules: [
       {
@@ -40,7 +41,17 @@ const commonWebpackModules = {
     alias: {
       '@core': path.join(__dirname, '../core')
     }
-  }
-};
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template:
+      env && env.cordova
+        ? path.join(__dirname, '../public_cordova/index.html')
+        : path.join(__dirname, '../public_web/index.html'),
+      filename: 'index.html',
+      inject: 'body'
+    })
+  ]
+});
 
 module.exports = commonWebpackModules;
