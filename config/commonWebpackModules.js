@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 const commonWebpackModules = env => ({
   module: {
@@ -34,7 +35,7 @@ const commonWebpackModules = env => ({
             }
           }
         ]
-      },
+      }
     ]
   },
   resolve: {
@@ -45,11 +46,16 @@ const commonWebpackModules = env => ({
   plugins: [
     new HtmlWebpackPlugin({
       template:
-      env && env.cordova
-        ? path.join(__dirname, '../public_cordova/index.html')
-        : path.join(__dirname, '../public_web/index.html'),
+        env && env.cordova
+          ? path.join(__dirname, '../public_cordova/index.html')
+          : path.join(__dirname, '../public_web/index.html'),
       filename: 'index.html',
       inject: 'body'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        cordova: JSON.stringify(env.cordova)
+      }
     })
   ]
 });
