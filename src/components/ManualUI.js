@@ -3,18 +3,39 @@ import Box from '@core/units/Box/Box';
 import Flex from '@core/units/Flex/Flex';
 import Button from './Button';
 
+const onClick1 = () => {
+  console.log('clicked');
+  if (window.bluetoothSerial) {
+    window.bluetoothSerial.list(list => console.log(list), error => console.error(error));
+  } else {
+    console.log('no bluetoothSerial');
+  }
+};
+
+const onClick2 = () => {
+  if (window.plugins && window.plugins.speechRecognition) {
+    const options = {
+      language: 'ru-RU',
+    };
+    window.plugins.speechRecognition.requestPermission(list => console.log(list), error => console.error(error), options);
+    window.plugins.speechRecognition.startListening(list => console.log(list), error => console.error(error), options);
+  } else {
+    console.log('no speechRecognition');
+  }
+};
+
 const ManualUI = () => (
   <Box m="60px auto" className="btns-panel">
     <Flex m="0 auto" w="80%" justify="space-around">
-      <Button animate type="secondary" className="button">
+      <Button onClick={onClick1} type="secondary" className="button">
         Patrol
       </Button>
-      <Button animate type="alert" className="button">
+      <Button onClick={onClick2} type="alert" className="button">
         Fire
       </Button>
     </Flex>
     <Flex mt="20px" justify="center" align="center" column className="movement-btns">
-      <Button animate className="button movement-button">
+      <Button className="button movement-button">
         &#8593;
       </Button>
       <Flex
@@ -22,14 +43,14 @@ const ManualUI = () => (
         justify="space-between"
         className="vertical"
       >
-        <Button animate className="button movement-button">
+        <Button className="button movement-button">
           &#8592;
         </Button>
-        <Button animate className="button movement-button">
+        <Button className="button movement-button">
           &#8594;
         </Button>
       </Flex>
-      <Button animate className="button movement-button">
+      <Button className="button movement-button">
         &#8595;
       </Button>
     </Flex>
