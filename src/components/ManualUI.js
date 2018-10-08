@@ -3,10 +3,17 @@ import Box from '@core/units/Box/Box';
 import Flex from '@core/units/Flex/Flex';
 import Button from './Button';
 
+const emelyaId = '98:D3:61:F5:C8:C3';
+
 const onClick1 = () => {
   console.log('clicked');
-  if (window.bluetoothSerial) {
-    window.bluetoothSerial.list(list => console.log(list), error => console.error(error));
+  const { bluetoothSerial: Serial } = window;
+  if (Serial) {
+    // Serial.list(list => console.log(list), error => console.error(error));
+    Serial.connect(emelyaId, result => console.log(`result +  ${result}`), error => console.error(`error + ${error}`));
+    setTimeout(() => {
+      Serial.write('1', result => console.log(`result +  ${result}`), error => console.error(`error + ${error}`));
+    }, 1000);
   } else {
     console.log('no bluetoothSerial');
   }
