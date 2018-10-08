@@ -13,15 +13,15 @@ const onClick1 = () => {
 };
 
 const onClick2 = () => {
-  if (window.plugins && window.plugins.speechRecognition) {
-    const options = {
-      language: 'ru-RU',
-    };
-    window.plugins.speechRecognition.requestPermission(list => console.log(list), error => console.error(error), options);
-    window.plugins.speechRecognition.startListening(list => console.log(list), error => console.error(error), options);
-  } else {
-    console.log('no speechRecognition');
-  }
+  console.log('start listening');
+  const options = {
+    language: 'ru-RU',
+  };
+  window.plugins.speechRecognition.startListening(
+    list => console.log(list),
+    error => console.error(error),
+    options
+  );
 };
 
 const ManualUI = () => (

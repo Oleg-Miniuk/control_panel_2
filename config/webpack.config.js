@@ -4,7 +4,8 @@ const getCommonWebpackModules = require('./commonWebpackModules');
 module.exports = (env) => {
   const { module: { rules: commonRules },
     resolve: { alias: commonAliases },
-    plugins: commonPlugins } = getCommonWebpackModules(env);
+    plugins: commonPlugins,
+    devtool: commonDevTool } = getCommonWebpackModules(env);
 
   const config = { mode: 'development',
     context: path.join(__dirname, '../src'),
@@ -16,7 +17,8 @@ module.exports = (env) => {
     historyApiFallback: true },
     resolve: { alias: { ...commonAliases } },
     module: { rules: [...commonRules] },
-    plugins: [...commonPlugins]
+    plugins: [...commonPlugins],
+    devtool: commonDevTool
   };
 
   return config;

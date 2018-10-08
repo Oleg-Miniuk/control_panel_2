@@ -57,7 +57,8 @@ const commonWebpackModules = (env = {}) => ({
         cordova: JSON.stringify(env.cordova)
       }
     })
-  ]
+  ],
+  devtool: env.production ? 'source-map' : 'inline-source-map',
 });
 
 module.exports = commonWebpackModules;

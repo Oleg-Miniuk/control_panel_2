@@ -6,7 +6,8 @@ module.exports = (env) => {
   const {
     module: { rules: commonRules },
     resolve: { alias: commonAliases },
-    plugins: commonPlugins
+    plugins: commonPlugins,
+    devtool: commonDevTool
   } = getCommonWebpackModules(env);
 
   console.log(env);
@@ -18,7 +19,9 @@ module.exports = (env) => {
       path: path.join(__dirname, '../build_prod') },
     resolve: { alias: { ...commonAliases } },
     module: { rules: [...commonRules] },
-    plugins: [...commonPlugins] };
+    plugins: [...commonPlugins],
+    devtool: commonDevTool
+  };
 
   return config;
 };
