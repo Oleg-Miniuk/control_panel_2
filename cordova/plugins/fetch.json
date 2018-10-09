@@ -1,8 +1,8 @@
 {
-  "cordova-plugin-whitelist": {
+  "cordova-plugin-speechrecognition": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-whitelist@1"
+      "id": "cordova-plugin-speechrecognition"
     },
     "is_top_level": true,
     "variables": {}
@@ -15,10 +15,10 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-speechrecognition": {
+  "cordova-plugin-whitelist": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-speechrecognition"
+      "id": "cordova-plugin-whitelist@1"
     },
     "is_top_level": true,
     "variables": {}
