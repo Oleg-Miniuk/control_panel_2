@@ -49,10 +49,23 @@ const commandsActions = {
       this[commandsList[commandKey]]();
     }
   },
-  patrol: () => console.log('patrol'),
-  fire: () => {
-    // checkConnectionAndSend('1');
-    sendDataToArduino('1');
+  patrol: () => sendDataToArduino('9'),
+  fire: () => sendDataToArduino('1'),
+  forward: () => sendDataToArduino('8'),
+  back: () => sendDataToArduino('2'),
+  left: () => sendDataToArduino('4'),
+  right: () => sendDataToArduino('6'),
+
+  listen: () => {
+    console.log('start listening');
+    const options = {
+      language: 'ru-RU'
+    };
+    window.plugins.speechRecognition.startListening(
+      list => console.log(list),
+      error => console.error(error),
+      options
+    );
   }
 };
 

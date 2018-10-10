@@ -4,39 +4,45 @@ import Flex from '@core/units/Flex/Flex';
 import Button from './Button';
 import commandsActions from '../logic/commandsActions';
 
-const onClick1 = () => {
-  commandsActions.fire();
-};
+const fire = () => commandsActions.fire();
+const patrol = () => commandsActions.patrol();
 
-const onClick2 = () => {
-  console.log('start listening');
-  const options = {
-    language: 'ru-RU'
-  };
-  window.plugins.speechRecognition.startListening(
-    list => console.log(list),
-    error => console.error(error),
-    options
-  );
-};
+const forward = () => commandsActions.forward();
+const left = () => commandsActions.left();
+const right = () => commandsActions.right();
+const back = () => commandsActions.back();
 
 const ManualUI = () => (
   <Box m="60px auto" className="btns-panel">
     <Flex m="0 auto" w="80%" justify="space-around">
-      <Button onClick={onClick2} type="secondary" className="button">
+      <Button onClick={patrol} type="secondary" className="button">
         Patrol
       </Button>
-      <Button onClick={onClick1} type="alert" className="button">
+      <Button onClick={fire} type="alert" className="button">
         Fire
       </Button>
     </Flex>
-    <Flex mt="20px" justify="center" align="center" column className="movement-btns">
-      <Button className="button movement-button">&#8593;</Button>
+    <Flex
+      mt="20px"
+      justify="center"
+      align="center"
+      column
+      className="movement-btns"
+    >
+      <Button className="button movement-button" onClick={forward}>
+        &#8593;
+      </Button>
       <Flex w="210px" justify="space-between" className="vertical">
-        <Button className="button movement-button">&#8592;</Button>
-        <Button className="button movement-button">&#8594;</Button>
+        <Button className="button movement-button" onClick={left}>
+          &#8592;
+        </Button>
+        <Button className="button movement-button" onClick={right}>
+          &#8594;
+        </Button>
       </Flex>
-      <Button className="button movement-button">&#8595;</Button>
+      <Button className="button movement-button" onClick={back}>
+        &#8595;
+      </Button>
     </Flex>
   </Box>
 );

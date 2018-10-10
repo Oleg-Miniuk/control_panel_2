@@ -7,6 +7,7 @@ import AutomaticUI from './AutomaticUI';
 // import commandsActions from '../logic/commandsActions';
 import backgroundHud from '../../public_common/hud_back.jpg';
 import Button from './Button';
+import commandsActions from '../logic/commandsActions';
 
 const Background = styled(Box)`
   position: relative;
@@ -67,11 +68,9 @@ class App extends Component {
     console.log('listen');
   };
 
-  setMode = mode => this.setState({ mode });
+  setAutomatic = () => this.setState({ mode: 'automatic' }, commandsActions.listen);
 
-  setAutomatic = () => this.setMode('automatic');
-
-  setManual = () => this.setMode('manual');
+  setManual = () => this.setState({ mode: 'manual' });
 
   getBtnsProps = (type) => {
     const { mode } = this.state;
@@ -83,7 +82,12 @@ class App extends Component {
     return (
       <Background>
         <BackgroundImage src={backgroundHud} />
-        <Flex pt="20px" justify="center" align="center" className="btns-checker">
+        <Flex
+          pt="20px"
+          justify="center"
+          align="center"
+          className="btns-checker"
+        >
           <Box className="btns-checker__header">
             <ModeTitle>
 mode:
@@ -91,10 +95,17 @@ mode:
               {mode}
             </ModeTitle>
           </Box>
-          <Button {...this.getBtnsProps('automatic')} onClick={this.setAutomatic}>
+          <Button
+            {...this.getBtnsProps('automatic')}
+            onClick={this.setAutomatic}
+          >
             Automatic
           </Button>
-          <Button {...this.getBtnsProps('manual')} style={{ width: '110px' }} onClick={this.setManual}>
+          <Button
+            {...this.getBtnsProps('manual')}
+            style={{ width: '110px' }}
+            onClick={this.setManual}
+          >
             Manual
           </Button>
         </Flex>
