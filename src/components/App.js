@@ -68,7 +68,7 @@ class App extends Component {
     console.log('listen');
   };
 
-  setAutomatic = () => this.setState({ mode: 'automatic' }, commandsActions.listen);
+  setAutomatic = () => this.setState({ mode: 'automatic' }, () => commandsActions.listen(this.setManual));
 
   setManual = () => this.setState({ mode: 'manual' });
 
