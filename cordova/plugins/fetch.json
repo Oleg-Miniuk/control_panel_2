@@ -2,7 +2,7 @@
   "cordova-plugin-speechrecognition": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-speechrecognition"
+      "id": "cordova-plugin-speechrecognition@^1.2.0"
     },
     "is_top_level": true,
     "variables": {}
@@ -10,7 +10,7 @@
   "cordova-plugin-bluetooth-serial": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-bluetooth-serial"
+      "id": "cordova-plugin-bluetooth-serial@^0.4.7"
     },
     "is_top_level": true,
     "variables": {}

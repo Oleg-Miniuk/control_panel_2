@@ -36,10 +36,25 @@ const ModeTitle = styled.h4`
   transition-timing-function: ease-out;
   margin-right: 40px;
 `;
+
+
 class App extends Component {
   state = {
-    mode: 'manual'
+    mode: 'manual',
+    connected: false
   };
+
+  componentDidMount() {
+    const emelyaId = '98:D3:61:F5:C8:C3';
+    const { bluetoothSerial: Serial } = window;
+    Serial.connect(
+      emelyaId,
+      (result) => {
+        console.log(`connected to ${emelyaId}: ${result}`);
+      },
+      error => console.error(`error in connection to device: ${error}`)
+    );
+  }
 
   componentDidUpdate(prevProps, prevState) {
     const { mode } = this.state;

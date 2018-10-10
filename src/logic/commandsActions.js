@@ -1,10 +1,9 @@
 import commandsList from './commandsList';
 
-const { bluetoothSerial: Serial } = window;
 
 const connectToArduino = (cb) => {
   const emelyaId = '98:D3:61:F5:C8:C3';
-  Serial.connect(
+  window.bluetoothSerial.connect(
     emelyaId,
     (result) => {
       console.log(`connected to ${emelyaId}: ${result}`);
@@ -15,7 +14,7 @@ const connectToArduino = (cb) => {
 };
 
 const sendDataToArduino = (data) => {
-  Serial.write(
+  window.bluetoothSerial.write(
     data,
     result => console.log(`sended: ${data}, status: ${result}`),
     error => console.error(`error in sending: ${data}, status: ${error}`)
@@ -23,11 +22,11 @@ const sendDataToArduino = (data) => {
 };
 
 const checkConnectionAndSend = (data) => {
-  if (Serial) {
-    Serial.isEnabled(
+  if (window.bluetoothSerial) {
+    window.bluetoothSerial.isEnabled(
       () => {
         console.log('Bluetooth is enabled');
-        Serial.isConnected(
+        window.bluetoothSerial.isConnected(
           () => sendDataToArduino(data),
           connectToArduino(() => sendDataToArduino(data))
         );
@@ -37,7 +36,7 @@ const checkConnectionAndSend = (data) => {
       }
     );
   } else {
-    console.log('no bluetoothSerial');
+    console.log('no bluetoothwindow.bluetoothSerial');
   }
 };
 
@@ -52,7 +51,8 @@ const commandsActions = {
   },
   patrol: () => console.log('patrol'),
   fire: () => {
-    checkConnectionAndSend('1');
+    // checkConnectionAndSend('1');
+    sendDataToArduino('1');
   }
 };
 

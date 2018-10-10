@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --config config/webpack.config.js",
     "prod": "webpack --mode production --env.production --config config/webpack.production.config.js",
-    "cordova": "webpack --mode production --config config/webpack.production.config.js --env.cordova && node ./scripts/cordova.js && cd ./cordova && cordova run android"
+    "cordova": "webpack --mode production --config config/webpack.production.config.js --env.cordova && node ./scripts/cordova.js && cd ./cordova && cordova run android",
+    "get-cordova": "cordova create cordova && cd ./cordova/ && cordova platform add android && cordova plugin add cordova-plugin-speechrecognition && cordova plugin add cordova-plugin-bluetooth-serial && cordova plugin add cordova-plugin-screen-orientation"
   },
   "husky": {
     "hooks": {

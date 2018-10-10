@@ -22,7 +22,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-bluetooth-serial/-/cordova-plugin-bluetooth-serial-0.4.7.tgz",
   "_shasum": "1e4606ec6d42b7c23f60a74a87c7c4a4ec3828c0",
   "_spec": "cordova-plugin-bluetooth-serial",
-  "_where": "C:\\Users\\Lenovo\\AppData\\Local\\dev\\control_panel_2\\cordova",
+  "_where": "/home/minoa/dev/control_panel_2/cordova",
   "author": {
     "name": "Don Coleman",
     "email": "don.coleman@gmail.com"

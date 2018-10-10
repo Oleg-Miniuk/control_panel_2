@@ -23,10 +23,10 @@ const onClick2 = () => {
 const ManualUI = () => (
   <Box m="60px auto" className="btns-panel">
     <Flex m="0 auto" w="80%" justify="space-around">
-      <Button onClick={onClick1} type="secondary" className="button">
+      <Button onClick={onClick2} type="secondary" className="button">
         Patrol
       </Button>
-      <Button onClick={onClick2} type="alert" className="button">
+      <Button onClick={onClick1} type="alert" className="button">
         Fire
       </Button>
     </Flex>
