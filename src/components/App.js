@@ -38,7 +38,6 @@ const ModeTitle = styled.h4`
   margin-right: 40px;
 `;
 
-
 class App extends Component {
   state = {
     mode: 'manual',
@@ -46,15 +45,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const emelyaId = '98:D3:61:F5:C8:C3';
-    const { bluetoothSerial: Serial } = window;
-    Serial.connect(
-      emelyaId,
-      (result) => {
-        console.log(`connected to ${emelyaId}: ${result}`);
-      },
-      error => console.error(`error in connection to device: ${error}`)
-    );
+    commandsActions.connectToArduino();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -82,23 +73,14 @@ class App extends Component {
     return (
       <Background>
         <BackgroundImage src={backgroundHud} />
-        <Flex
-          pt="20px"
-          justify="center"
-          align="center"
-          className="btns-checker"
-        >
+        <Flex pt="20px" justify="center" align="center" className="btns-checker">
           <Box className="btns-checker__header">
             <ModeTitle>
 mode:
-              {' '}
               {mode}
             </ModeTitle>
           </Box>
-          <Button
-            {...this.getBtnsProps('automatic')}
-            onClick={this.setAutomatic}
-          >
+          <Button {...this.getBtnsProps('automatic')} onClick={this.setAutomatic}>
             Automatic
           </Button>
           <Button
