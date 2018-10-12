@@ -38,11 +38,9 @@ const commandsActions = {
     window.plugins.speechRecognition.startListening(
       (list) => {
         console.log(list);
-        const commandsArray = Object.keys(commandsList);
-        for (let index = 0; index < commandsArray.length; index += 1) {
-          if (list.some(speechListItem => speechListItem.indexOf(commandsArray[index]))) {
-            const commandKey = 
-          }
+        const commandKey = commandsActions.getCommandKey(list);
+        if (commandKey) {
+          commandsActions[commandKey]();
         }
         cb();
       },
@@ -76,13 +74,14 @@ const commandsActions = {
     }
   },
 
-  checkCommand: (command) => {
-    const commandKey = Object.keys(commandsList).filter(
-      commandItem => command.indexOf(commandItem) !== -1
-    )[0];
-    if (commandKey) {
-      commandsActions[commandsList[commandKey]]();
+  getCommandKey: (list) => {
+    const commandsArray = Object.keys(commandsList);
+    for (let index = 0; index < commandsArray.length; index += 1) {
+      if (list.some(speechListItem => speechListItem.indexOf(commandsArray[index]))) {
+        return commandsList[commandsArray[index]];
+      }
     }
+    return null;
   }
 };
 
