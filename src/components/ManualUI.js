@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Box from '@core/units/Box/Box';
 import Flex from '@core/units/Flex/Flex';
 import Button from './Button';
@@ -12,37 +13,43 @@ const left = () => commandsActions.left();
 const right = () => commandsActions.right();
 const back = () => commandsActions.back();
 
+const MovementButton = styled(Button)`
+  padding: 16px;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-bottom: 37px;
+`;
+
+const ActionButton = styled(Button)`
+  padding: 15px;
+  padding-bottom: 30px;
+`;
+
 const ManualUI = () => (
-  <Box m="60px auto" className="btns-panel">
-    <Flex m="0 auto" w="80%" justify="space-around">
-      <Button onClick={patrol} type="secondary" className="button">
+  <Box m="40px auto 0" className="btns-panel">
+    <Flex m="0 75px 0 auto" w="80%" justify="space-around">
+      <ActionButton onClick={patrol} type="secondary" className="button">
         Patrol
-      </Button>
-      <Button onClick={fire} type="alert" className="button">
+      </ActionButton>
+      <ActionButton onClick={fire} type="alert" className="button">
         Fire
-      </Button>
+      </ActionButton>
     </Flex>
-    <Flex
-      mt="20px"
-      justify="center"
-      align="center"
-      column
-      className="movement-btns"
-    >
-      <Button className="button movement-button" onClick={forward}>
+    <Flex mt="25px" justify="center" align="center" column className="movement-btns">
+      <MovementButton className="button movement-button" onClick={forward}>
         &#8593;
-      </Button>
-      <Flex w="210px" justify="space-between" className="vertical">
-        <Button className="button movement-button" onClick={left}>
+      </MovementButton>
+      <Flex w="265px" justify="space-between" className="vertical">
+        <MovementButton className="button movement-button" onClick={left}>
           &#8592;
-        </Button>
-        <Button className="button movement-button" onClick={right}>
+        </MovementButton>
+        <MovementButton className="button movement-button" onClick={right}>
           &#8594;
-        </Button>
+        </MovementButton>
       </Flex>
-      <Button className="button movement-button" onClick={back}>
+      <MovementButton className="button movement-button" onClick={back}>
         &#8595;
-      </Button>
+      </MovementButton>
     </Flex>
   </Box>
 );

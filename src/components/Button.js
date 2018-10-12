@@ -60,7 +60,7 @@ const Button = styled.button`
   color: ${props => getColor(props.type)};
   cursor: pointer;
   font-family: Arial;
-  font-size: 15.75px;
+  font-size: 27.75px;
   font-stretch: 100%;
   font-style: normal;
   font-variant-caps: normal;
