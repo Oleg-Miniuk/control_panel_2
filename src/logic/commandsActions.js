@@ -4,16 +4,20 @@ const commandsActions = {
   connectToArduino: (cb) => {
     const emelyaId = '98:D3:61:F5:C8:C3';
     const { bluetoothSerial: Serial } = window;
-    Serial.connect(
-      emelyaId,
-      (result) => {
-        console.log(`connected to ${emelyaId}: ${result}`);
-        if (cb && typeof cb === 'function') {
-          cb();
-        }
-      },
-      error => console.error(`error in connection to device: ${error}`)
-    );
+    if (Serial) {
+      Serial.connect(
+        emelyaId,
+        (result) => {
+          console.log(`connected to ${emelyaId}: ${result}`);
+          if (cb && typeof cb === 'function') {
+            cb();
+          }
+        },
+        error => console.error(`error in connection to device: ${error}`)
+      );
+    } else {
+      console.log('no bluetoothSerial module');
+    }
   },
 
   sendDataToArduino: (data) => {
