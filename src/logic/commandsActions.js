@@ -28,12 +28,13 @@ const commandsActions = {
     );
   },
 
-  patrol: () => this.sendDataToArduino('9'),
-  fire: () => this.sendDataToArduino('1'),
-  forward: () => this.sendDataToArduino('8'),
+  patrol: () => this.sendDataToArduino('7'),
+  fire: () => this.sendDataToArduino('9'),
+  forward: () => this.sendDataToArduino('5'),
   back: () => this.sendDataToArduino('2'),
-  left: () => this.sendDataToArduino('4'),
-  right: () => this.sendDataToArduino('6'),
+  left: () => this.sendDataToArduino('1'),
+  right: () => this.sendDataToArduino('3'),
+  stop: () => this.sendDataToArduino('0'),
 
   recordSpeech: (cb) => {
     const options = {

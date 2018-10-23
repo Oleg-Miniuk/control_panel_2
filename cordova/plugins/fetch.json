@@ -1,8 +1,16 @@
 {
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
   "cordova-plugin-speechrecognition": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-speechrecognition@^1.2.0"
+      "id": "cordova-plugin-speechrecognition"
     },
     "is_top_level": true,
     "variables": {}
@@ -10,15 +18,7 @@
   "cordova-plugin-bluetooth-serial": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-bluetooth-serial@^0.4.7"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-whitelist": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-whitelist@1"
+      "id": "cordova-plugin-bluetooth-serial"
     },
     "is_top_level": true,
     "variables": {}

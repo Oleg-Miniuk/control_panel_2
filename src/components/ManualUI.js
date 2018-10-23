@@ -13,6 +13,8 @@ const left = () => commandsActions.left();
 const right = () => commandsActions.right();
 const back = () => commandsActions.back();
 
+const stop = () => commandsActions.stop();
+
 const MovementButton = styled(Button)`
   padding: 16px;
   padding-left: 27px;
@@ -26,7 +28,7 @@ const ActionButton = styled(Button)`
 `;
 
 const ManualUI = () => (
-  <Box m="40px auto 0" className="btns-panel">
+  <Box m="30px auto 0" className="btns-panel">
     <Flex m="0 75px 0 auto" w="80%" justify="space-around">
       <ActionButton onClick={patrol} type="secondary" className="button">
         Patrol
@@ -35,7 +37,7 @@ const ManualUI = () => (
         Fire
       </ActionButton>
     </Flex>
-    <Flex mt="25px" justify="center" align="center" column className="movement-btns">
+    <Flex mt="15px" justify="center" align="center" column className="movement-btns">
       <MovementButton className="button movement-button" onClick={forward}>
         &#8593;
       </MovementButton>
@@ -50,6 +52,11 @@ const ManualUI = () => (
       <MovementButton className="button movement-button" onClick={back}>
         &#8595;
       </MovementButton>
+    </Flex>
+    <Flex justify="flex-end" pr="50px">
+      <ActionButton onClick={stop} type="info" className="button">
+        Stop
+      </ActionButton>
     </Flex>
   </Box>
 );

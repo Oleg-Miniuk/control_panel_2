@@ -19,9 +19,9 @@
     },
     "cordova": {
         "plugins": {
+            "cordova-plugin-whitelist": {},
             "cordova-plugin-speechrecognition": {},
             "cordova-plugin-bluetooth-serial": {},
-            "cordova-plugin-whitelist": {},
             "cordova-plugin-screen-orientation": {}
         },
         "platforms": [
