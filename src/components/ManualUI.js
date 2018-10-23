@@ -16,15 +16,15 @@ const back = () => commandsActions.back();
 const stop = () => commandsActions.stop();
 
 const MovementButton = styled(Button)`
-  padding: 16px;
-  padding-left: 27px;
-  padding-right: 27px;
-  padding-bottom: 37px;
+  padding: 13px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 34px;
 `;
 
 const ActionButton = styled(Button)`
-  padding: 15px;
-  padding-bottom: 30px;
+  padding: 12px;
+  padding-bottom: 27px;
 `;
 
 const ManualUI = () => (
