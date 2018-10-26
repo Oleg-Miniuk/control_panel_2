@@ -28,13 +28,13 @@ const commandsActions = {
     );
   },
 
-  patrol: () => this.sendDataToArduino('7'),
-  fire: () => this.sendDataToArduino('9'),
-  forward: () => this.sendDataToArduino('5'),
-  back: () => this.sendDataToArduino('2'),
-  left: () => this.sendDataToArduino('1'),
-  right: () => this.sendDataToArduino('3'),
-  stop: () => this.sendDataToArduino('0'),
+  patrol: () => commandsActions.sendDataToArduino('7'),
+  fire: () => commandsActions.sendDataToArduino('9'),
+  forward: () => commandsActions.sendDataToArduino('5'),
+  back: () => commandsActions.sendDataToArduino('2'),
+  left: () => commandsActions.sendDataToArduino('1'),
+  right: () => commandsActions.sendDataToArduino('3'),
+  stop: () => commandsActions.sendDataToArduino('0'),
 
   recordSpeech: (cb) => {
     const options = {
@@ -60,10 +60,10 @@ const commandsActions = {
       window.plugins.speechRecognition.hasPermission(
         (hasPermission) => {
           if (hasPermission) {
-            this.recordSpeech(cb);
+            commandsActions.recordSpeech(cb);
           } else {
             window.plugins.speechRecognition.requestPermission(
-              () => this.recordSpeech(cb),
+              () => commandsActions.recordSpeech(cb),
               (err) => {
                 throw err;
               }
