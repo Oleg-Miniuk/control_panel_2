@@ -55,13 +55,9 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { mode } = this.state;
     if (prevState.mode !== 'automatic' && mode === 'automatic') {
-      // this.listenToSpeech();
+      commandsActions.listen(this.setManual);
     }
   }
-
-  listenToSpeech = () => {
-    console.log('listen');
-  };
 
   setAutomatic = () => this.setState({ mode: 'automatic' }, () => commandsActions.listen(this.setManual));
 
