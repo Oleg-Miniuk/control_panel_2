@@ -48,6 +48,10 @@ class App extends Component {
     commandsActions.connectToArduino();
   }
 
+  componentWillUnmount() {
+    commandsActions.unsubscribe();
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { mode } = this.state;
     if (prevState.mode !== 'automatic' && mode === 'automatic') {
@@ -76,7 +80,7 @@ class App extends Component {
         <Flex pt="20px" justify="center" align="center" className="btns-checker">
           <Box className="btns-checker__header">
             <ModeTitle>
-mode:
+              mode:
               {mode}
             </ModeTitle>
           </Box>

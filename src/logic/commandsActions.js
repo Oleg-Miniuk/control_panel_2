@@ -9,6 +9,13 @@ const commandsActions = {
         emelyaId,
         (result) => {
           console.log(`connected to ${emelyaId}: ${result}`);
+          window.bluetoothSerial.subscribe(
+            '\n',
+            (receivedData) => {
+              console.log(`received data: ${receivedData}`);
+            },
+            receivingError => console.error(`error in receiving data: ${receivingError}`)
+          );
           if (cb && typeof cb === 'function') {
             cb();
           }
@@ -18,6 +25,15 @@ const commandsActions = {
     } else {
       console.log('no bluetoothSerial module');
     }
+  },
+
+  unsubscribe: () => {
+    window.bluetoothSerial.unsubscribe(
+      (result) => {
+        console.log(`unsubscribed : ${result}`);
+      },
+      error => console.error(`error in unsubscribing: ${error}`)
+    );
   },
 
   sendDataToArduino: (data) => {
